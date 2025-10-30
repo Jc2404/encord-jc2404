@@ -1,41 +1,7 @@
 # Tetris programming challenge
 
-## Solution - Installation and Usage
-
-### Requirements
-- Python 3.6 or higher
-- No external dependencies (uses only Python standard library)
-
-### Installation
-No installation required. The solution is contained in `tetris.py` (or the executable `tetris` script).
-
-### Running the Program
-
-**On Windows:**
-```bash
-python tetris.py < tests/input.txt
-```
-
-Or using the batch script:
-```bash
-tetris.bat < tests/input.txt
-```
-
-**On Linux/macOS:**
-```bash
-chmod +x tetris
-./tetris < tests/input.txt
-```
-
-### Running Tests
-```bash
-python tests/sample_test_fixed.py
-```
-
-### Dependencies
-See `requirements.txt` (no external dependencies required).
-
-For detailed information about the solution design, complexity analysis, and extensibility, see [SOLUTION.md](SOLUTION.md).
+## Solution
+For information and explanation on the solution, see [SOLUTION.md](SOLUTION.md).
 
 ---
 
