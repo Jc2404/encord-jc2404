@@ -51,8 +51,8 @@ Simply add to the `PIECES` dictionary:
 ```python
 PIECES = {
     'Q': [(0, 0), (1, 0), (0, 1), (1, 1)],
-    # Add new piece:
-    'X': [(0, 1), (1, 0), (1, 1), (1, 2)],  # Cross shape
+    # example:
+    'X': [(0, 1), (1, 0), (1, 1), (1, 2)],
 }
 ```
 
@@ -61,11 +61,11 @@ The `GRID_WIDTH` constant can be modifed for different variations of the game
 
 ### Adding movements
 The `add_piece` method is designed to be modular and are seperated into different steps. To add more extensions (e.g. shifts, rotations), simply add new steps inside the method.
-However, due to the nature of the task, the most efficient way to return the height is to directly return the grid after each step. This is different from the original game where pieces fall step by step.
+However, due to the nature of the task, the most efficient way to return the height is to directly return the grid after each step. This is different from the original game where pieces fall step by step so a 'falling' mechanism would be needed if desiring movements mid air.
 
 
 ## Testing
 The sample_test.py is modified to support Windows.
-The test cases are passed and some extra testing were done.
+The two test cases are passed and the solution also passed self-made tests.
 
 
