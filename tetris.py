@@ -35,7 +35,9 @@ class TetrisGrid:
     
     def add_piece(self, piece_type: str, column: int) -> None:
         """
-        Input:
+        Outer logic for the whole process of droping a piece down
+
+        Inputs:
             piece_type: Type of piece (Q, Z, S, T, I, L, J)
             column: column where the piece enters (left)
         """
@@ -44,15 +46,17 @@ class TetrisGrid:
         # Find the lowest valid y-position
         drop_y = self._find_drop_position(piece_coords, column)
         
-        for dx, dy in piece_coords:
+        for dx, dy in piece_coords: # place each cell in the grid
             x, y = column + dx, drop_y + dy
             self.filled[(x, y)] = True
             self.column_heights[x] = max(self.column_heights[x], y + 1)
         
-        self._clear_complete_rows()
+        self._clear_complete_rows() # clear completed rows
     
     def _find_drop_position(self, piece_coords: List[Tuple[int, int]], column: int) -> int:
         """
+        Find the lowest valid y-position for a piece by checking validity of all cells in it.
+
         Inputs:
             piece_coords: List of coordinates for the piece
             column: position of piece (left)
@@ -72,6 +76,10 @@ class TetrisGrid:
         return max_landing_height
     
     def _clear_complete_rows(self) -> None:
+        """
+        Remove all rows that are filled and drop the rows above them.
+        """
+
         if not self.filled:
             return
         
@@ -96,7 +104,7 @@ class TetrisGrid:
             if y in rows_to_clear_set:
                 continue
             
-            # Count how many cleared rows are below this cell
+            # for each cell check if it needs to be dropped down
             rows_below = sum(1 for cleared_y in rows_to_clear if cleared_y < y)
             new_y = y - rows_below
             new_filled[(x, new_y)] = val
@@ -108,9 +116,15 @@ class TetrisGrid:
             self.column_heights[x] = max(self.column_heights[x], y + 1)
     
     def _is_row_complete(self, y: int) -> bool:
+        """
+        Check if a row is filled.
+        """
         return all((x, y) in self.filled for x in range(self.width))
     
     def get_height(self) -> int:
+        """
+        Return the highest occupied row of the grid, as required by the task.
+        """
         return max(self.column_heights) if self.column_heights else 0
 
 

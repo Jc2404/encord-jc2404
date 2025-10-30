@@ -23,11 +23,20 @@ class TestCase:
 
 
 def run_test(test_case: TestCase):
-    p = subprocess.run(
-        ["/bin/bash", ENTRY_POINT],
-        input=test_case.sample_input,
-        capture_output=True,
-    )
+    # Modified for Windows compatibility
+    import sys
+    if sys.platform == "win32":
+        p = subprocess.run(
+            ["python", "tetris.py"],
+            input=test_case.sample_input,
+            capture_output=True,
+        )
+    else:
+        p = subprocess.run(
+            ["/bin/bash", ENTRY_POINT],
+            input=test_case.sample_input,
+            capture_output=True,
+        )
 
     output = [int(line) for line in p.stdout.splitlines()]
 

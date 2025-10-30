@@ -2,3 +2,9 @@
 .idea
 __pycache__
 .pytest_cache
+visual_demo.py
+tests/sample_test_fixed.py
+tetris.bat
+tetris copy.py
+CHECKLIST.md
+QUICKSTART.md
